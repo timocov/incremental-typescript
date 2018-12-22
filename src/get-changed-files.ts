@@ -14,14 +14,11 @@ export function getChangedFiles(inputFiles: string[]): ChangedFilesResult {
 	inputFiles.forEach((inputFile: string) => {
 		const ext = path.extname(inputFile);
 		if (ext === ts.Extension.Ts || ext === ts.Extension.Tsx) {
-			const outFile = inputFile.substring(0, inputFile.length - ext.length) + ts.Extension.Js;
+			const outFile = getOutputFileForInput(inputFile);
 			outputToInputPathMap.set(outFile, inputFile);
 
 			try {
-				const inputFileChangedTime = fs.statSync(inputFile).mtimeMs;
-				const outputFileChangedTime = fs.statSync(outFile).mtimeMs;
-
-				if (outputFileChangedTime > inputFileChangedTime) {
+				if (isOutputNewer(inputFile, outFile)) {
 					return;
 				}
 			} catch {
@@ -36,7 +33,43 @@ export function getChangedFiles(inputFiles: string[]): ChangedFilesResult {
 		changedFiles,
 		shouldWriteFile: (filePath: string) => {
 			const inputFile = outputToInputPathMap.get(filePath);
-			return inputFile === undefined || changedFiles.indexOf(inputFile) !== -1;
+			if (inputFile !== undefined) {
+				return changedFiles.indexOf(inputFile) !== -1;
+			}
+
+			try {
+				// try to find according .ts file
+				return !isOutputNewer(getInputFileForOutput(filePath), filePath);
+			} catch {
+				try {
+					// then try to find according .tsx file
+					return !isOutputNewer(getInputFileForOutput(filePath, true), filePath);
+				} catch {
+					// do nothing
+				}
+			}
+
+			return true;
 		},
 	}
+}
+
+function getOutputFileForInput(inputFile: string): string {
+	const ext = path.extname(inputFile);
+	return inputFile.substring(0, inputFile.length - ext.length) + ts.Extension.Js;
+}
+
+function getInputFileForOutput(outputFile: string, tsx?: boolean): string {
+	let ext = path.extname(outputFile);
+	if (ext === '.map') {
+		ext = '.js.map';
+	}
+
+	return outputFile.substring(0, outputFile.length - ext.length) + (tsx ? ts.Extension.Tsx : ts.Extension.Ts);
+}
+
+function isOutputNewer(inputFile: string, outputFile: string): boolean {
+	const inputFileChangedTime = fs.statSync(inputFile).mtimeMs;
+	const outputFileChangedTime = fs.statSync(outputFile).mtimeMs;
+	return outputFileChangedTime > inputFileChangedTime;
 }
