@@ -8,6 +8,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
+		"outDir": "lib",
 		"strict": true,
 		"stripInternal": true,
 		"target": "es5"
