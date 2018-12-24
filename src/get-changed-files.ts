@@ -12,6 +12,10 @@ export function getChangedFiles(inputFiles: string[]): ChangedFilesResult {
 	const changedFiles: string[] = [];
 
 	inputFiles.forEach((inputFile: string) => {
+		if (inputFile.endsWith(ts.Extension.Dts)) {
+			return;
+		}
+
 		const ext = path.extname(inputFile);
 		if (ext === ts.Extension.Ts || ext === ts.Extension.Tsx) {
 			const outFile = getOutputFileForInput(inputFile);
