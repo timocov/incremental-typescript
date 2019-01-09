@@ -67,6 +67,8 @@ function getInputFileForOutput(outputFile: string, tsx?: boolean): string {
 	let ext = path.extname(outputFile);
 	if (ext === '.map') {
 		ext = '.js.map';
+	} else if (outputFile.endsWith(ts.Extension.Dts)) {
+		ext = ts.Extension.Dts;
 	}
 
 	return outputFile.substring(0, outputFile.length - ext.length) + (tsx ? ts.Extension.Tsx : ts.Extension.Ts);
