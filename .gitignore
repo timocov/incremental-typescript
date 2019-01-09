@@ -1,5 +1,6 @@
 **/*.js
 **/*.js.map
+*.tgz
 node_modules/
 package-lock.json
 package-lock.json.*
