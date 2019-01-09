@@ -17,7 +17,7 @@ But result of `tsci` depends on what file you've changed and how many dependenci
 
 So, **sometimes** it can be very useful tool to compile part of your project.
 
-It is full-replacement for `tsc` - everywhere you used `tsc` you can use `tsci`.
+It is drop-in replacement for `tsc` - everywhere you used `tsc` you can use `tsci`.
 All you need to do - just replace `tsc` with `tsci`.
 
 ## How it works
