@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "description": "Incremental TypeScript compiler",
   "author": "Evgeniy Timokhov",
+  "bin": {
+    "tsci": "./bin/tsci"
+  },
   "devDependencies": {
     "@types/node": "~10.12.18",
     "typescript": "~3.2.2"
