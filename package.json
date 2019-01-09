@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "incremental-typescript",
-  "version": "0.0.1",
+  "version": "3.2.2-0",
   "description": "Incremental TypeScript compiler",
   "author": "Evgeniy Timokhov",
   "bin": {
