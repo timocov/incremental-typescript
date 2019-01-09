@@ -10,5 +10,10 @@
   },
   "peerDependencies": {
     "typescript": "3.2.2"
-  }
+  },
+  "keywords": [
+    "typescript",
+    "incremental compilation",
+    "incremental build"
+  ]
 }
