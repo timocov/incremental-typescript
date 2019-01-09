@@ -9,6 +9,6 @@
     "typescript": "~3.2.2"
   },
   "peerDependencies": {
-    "typescript": "~3.2.2"
+    "typescript": "3.2.2"
   }
 }
