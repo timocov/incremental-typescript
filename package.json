@@ -14,6 +14,14 @@
   "peerDependencies": {
     "typescript": "3.2.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timocov/incremental-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/timocov/incremental-typescript/issues"
+  },
+  "homepage": "https://github.com/timocov/incremental-typescript",
   "keywords": [
     "typescript",
     "incremental compilation",
