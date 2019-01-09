@@ -10,8 +10,8 @@ Yeah, you can use "watch" mode for that, but sometimes you cannot (or don't want
 
 In my local tests with only 1 changed file (of 2k+ files in total) I got the following results:
 
-- `tsc` takes ~75sec
-- `tsci` takes ~6-7secs
+- `tsc` takes ~75 seconds
+- `tsci` takes ~6-7 seconds (~10x faster)
 
 But result of `tsci` depends on what file you've changed and how many dependencies this files has (with transitive dependencies).
 
