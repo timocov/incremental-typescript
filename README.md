@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/incremental-typescript.svg)](https://badge.fury.io/js/incremental-typescript)
+
 # Incremental Typescript
 
 This tool allows you make something like "incremental" compilations.
