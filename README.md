@@ -2,6 +2,8 @@
 
 # Incremental Typescript
 
+## :warning::warning::warning: This tools is deprecated - use [`--incremental` compiler flag](https://devblogs.microsoft.com/typescript/announcing-typescript-3-4-rc/) instead.
+
 This tool allows you make something like "incremental" compilations.
 For example, if you change only 1 file, you don't need to rebuild the whole project to compile only changed file.
 Yeah, you can use "watch" mode for that, but sometimes you cannot (or don't want) to use it due some reasons:
